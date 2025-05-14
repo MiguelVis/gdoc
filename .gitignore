@@ -58,5 +58,6 @@ z80.h
 # PROJECT FILES & FOLDERS
 # -----------------------
 backup/
+my_notes/
 !testa.zsm
 !TESTA.ZSM

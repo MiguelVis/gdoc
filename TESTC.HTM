@@ -1,160 +1,160 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <title>Test - testc.c</title>
-  <style>
-    body {font-family:monospace;}
-    h1 {border-bottom:1px dotted black;background-color:#B0C4DE;}
-    h2 {border-bottom:1px dotted black;background-color:#B0C4DE;margin-top:1.25em;}
-    h3 {border-bottom:1px dotted black;background-color:#B0C4DE;}
-    dt {font-weight:bold;}  </style>
- <head>
- <body>
-  <h1>Test</h1>
-  <h2>testc.c</h2>
-  <p>The purpose of this file is to test the gdoc program.</p>
-  <dl>
-   <dt>Author:</dt>
-   <dd>Miguel I. Garcia Lopez / FloppySoftware</dd>
-  </dl>
-  <dl>
-   <dt>Version:</dt>
-   <dd>1.00</dd>
-  </dl>
-  <dl>
-   <dt>Date:</dt>
-   <dd>10 Apr 2016</dd>
-  </dl>
-  <dl>
-   <dt>Copyright:</dt>
-   <dd>(c) 2016 FloppySoftware. Licensed under the GNU General Public License v3.</dd>
-  </dl>
-  <p>
-   The gdoc program is a documentation generator for MESCC source code files (and
-   presumably other sources for c-like compilers).
-   <br>
-   <br>
-   It is written to be simple but effective, and it has some degree of
-   compatibility with other documentation generator tools as doxygen or javadoc.
-   <br>
-   <br>
-   What about item lists?
-   <ul>
-    <li>
-     Item number 1.
-    </li>
-    <li>
-     Item number 2.
-    </li>
-    <li>
-     Item number 3.
-    </li>
-   </ul>
-  </p>
-  <dl>
-   <dt>Sections:</dt>
-   <dd><a href='#s0'>Introduction</a></dd>
-   <dd><a href='#s1'>Another section</a></dd>
-  </dl>
-  <dl>
-   <dt>Document links:</dt>
-   <dd><a href='lib1.htm'>Library #1 documentation link</a></dd>
-   <dd><a href='lib2.htm'>Library #2 documentation link</a></dd>
-   <dd><a href='lib3.htm'>Library #3 documentation link</a></dd>
-  </dl>
-  <dl>
-   <dt>Functions:</dt>
-   <dd><a href='#f0'>main(int argc, WORD argv[]) : int</a></dd>
-   <dd>&nbsp;- The main function.</dd>
-   <dd><a href='#f1'>hello() : void</a></dd>
-   <dd>&nbsp;- Say hello (or something)</dd>
-   <dd><a href='#f2'>program(char *name) : void</a></dd>
-   <dd>&nbsp;- Print the program name.</dd>
-   <dd><a href='#f3'>params(int num, WORD what[]) : int</a></dd>
-   <dd>&nbsp;- Print the program arguments.</dd>
-   <dd><a href='#f4'>bye() : void</a></dd>
-   <dd>&nbsp;- Say bye.</dd>
-  </dl>
-  <h2>Sections Documentation</h2>
-  <h3 id='s0'>Introduction</h3>
-  <p>The introduction of this gdoc example.</p>
-  <p>
-   This is a section named "Introduction", which explains
-   some aspects about this gdoc example.
-   <br>
-   <br>
-   You can follow these links for more information:
-  </p>
-  <dl>
-   <dt>Document links:</dt>
-   <dd><a href='http://www.floppysoftware.es'>FloppySoftware website</a></dd>
-   <dd><a href='mescc.htm'>MESCC documentation link</a></dd>
-  </dl>
-  <h3 id='s1'>Another section</h3>
-  <p>This is another section of this gdoc example.</p>
-  <p>
-   This is a section named "Another section", which tells you
-   something more about this gdoc example.
-  </p>
-  <h2>Functions Documentation</h2>
-  <h3 id='f0'>main(int argc, WORD argv[]) : int</h3>
-  <p>The main function.</p>
-  <p>
-   This function will be called on the first place. The second
-   argument would be 'char *argv[]' in standard C.
-  </p>
-  <dl>
-   <dt>Parameters:</dt>
-   <dd>argc - the number or arguments given in the command line</dd>
-   <dd>argv - the arguments (#0 is the program name)</dd>
-  </dl>
-  <dl>
-   <dt>Returns:</dt>
-   <dd>the success / error / whatever code</dd>
-  </dl>
-  <h3 id='f1'>hello() : void</h3>
-  <p>Say hello (or something)</p>
-  <p>
-   Say hello, or whatever the message is passed as an argument.
-  </p>
-  <dl>
-   <dt>Parameters:</dt>
-   <dd>msg - the message</dd>
-  </dl>
-  <h3 id='f2'>program(char *name) : void</h3>
-  <p>Print the program name.</p>
-  <p>
-   Print the name of the program, given as a parameter.
-  </p>
-  <dl>
-   <dt>Parameters:</dt>
-   <dd>name - the program name</dd>
-  </dl>
-  <h3 id='f3'>params(int num, WORD what[]) : int</h3>
-  <p>Print the program arguments.</p>
-  <p>
-   Print the arguments given in the command line, if any. The second
-   argument would be 'char *argv[]' in standard C.
-  </p>
-  <dl>
-   <dt>Parameters:</dt>
-   <dd>num - the number of arguments</dd>
-   <dd>what - the arguments</dd>
-  </dl>
-  <dl>
-   <dt>Returns:</dt>
-   <dd>the number of arguments</dd>
-  </dl>
-  <h3 id='f4'>bye() : void</h3>
-  <p>Say bye.</p>
-  <p>
-   Say bye to the user. This function should be
-   the last called function in the program, but who knows.
-  </p>
-  <br>
+<head>
+<title>Test - testc.c</title>
+<style>
+body {font-family:monospace;}
+h1 {border-bottom:1px dotted black;background-color:#B0C4DE;}
+h2 {border-bottom:1px dotted black;background-color:#B0C4DE;margin-top:1.25em;}
+h3 {border-bottom:1px dotted black;background-color:#B0C4DE;}
+dt {font-weight:bold;}pre {border-left:1px #000000 solid;padding:0.5em;background-color:#D0D0D0}</style>
+<head>
+<body>
+<h1>Test</h1>
+<h2>testc.c</h2>
+<p>The purpose of this file is to test the gdoc program.</p>
+<dl>
+<dt>Author:</dt>
+<dd>Miguel I. Garcia Lopez / FloppySoftware</dd>
+</dl>
+<dl>
+<dt>Version:</dt>
+<dd>1.00</dd>
+</dl>
+<dl>
+<dt>Date:</dt>
+<dd>10 Apr 2016</dd>
+</dl>
+<dl>
+<dt>Copyright:</dt>
+<dd>(c) 2016 FloppySoftware. Licensed under the GNU General Public License v3.</dd>
+</dl>
+<p>
+The gdoc program is a documentation generator for MESCC source code files (and
+presumably other sources for c-like compilers).
+</p>
+<p>
+It is written to be simple but effective, and it has some degree of
+compatibility with other documentation generator tools as doxygen or javadoc.
+</p>
+<p>
+What about item lists?
+</p>
+<ul>
+<li>
+Item number 1.
+</li>
+<li>
+Item number 2.
+</li>
+<li>
+Item number 3.
+</li>
+</ul>
+<dl>
+<dt>Sections:</dt>
+<dd><a href='#s0'>Introduction</a></dd>
+<dd><a href='#s1'>Another section</a></dd>
+</dl>
+<dl>
+<dt>Document links:</dt>
+<dd><a href='lib1.htm'>Library #1 documentation link</a></dd>
+<dd><a href='lib2.htm'>Library #2 documentation link</a></dd>
+<dd><a href='lib3.htm'>Library #3 documentation link</a></dd>
+</dl>
+<dl>
+<dt>Functions:</dt>
+<dd><a href='#f0'>main(int argc, WORD argv[]) : int</a></dd>
+<dd>&nbsp;- The main function.</dd>
+<dd><a href='#f1'>hello() : void</a></dd>
+<dd>&nbsp;- Say hello (or something)</dd>
+<dd><a href='#f2'>program(char *name) : void</a></dd>
+<dd>&nbsp;- Print the program name.</dd>
+<dd><a href='#f3'>params(int num, WORD what[]) : int</a></dd>
+<dd>&nbsp;- Print the program arguments.</dd>
+<dd><a href='#f4'>bye() : void</a></dd>
+<dd>&nbsp;- Say bye.</dd>
+</dl>
+<h2>Sections Documentation</h2>
+<h3 id='s0'>Introduction</h3>
+<p>The introduction of this gdoc example.</p>
+<p>
+This is a section named "Introduction", which explains
+some aspects about this gdoc example.
+</p>
+<p>
+You can follow these links for more information:
+</p>
+<dl>
+<dt>Document links:</dt>
+<dd><a href='http://www.floppysoftware.es'>FloppySoftware website</a></dd>
+<dd><a href='mescc.htm'>MESCC documentation link</a></dd>
+</dl>
+<h3 id='s1'>Another section</h3>
+<p>This is another section of this gdoc example.</p>
+<p>
+This is a section named "Another section", which tells you
+something more about this gdoc example.
+</p>
+<h2>Functions Documentation</h2>
+<h3 id='f0'>main(int argc, WORD argv[]) : int</h3>
+<p>The main function.</p>
+<p>
+This function will be called on the first place. The second
+argument would be 'char *argv[]' in standard C.
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>argc - the number or arguments given in the command line</dd>
+<dd>argv - the arguments (#0 is the program name)</dd>
+</dl>
+<dl>
+<dt>Returns:</dt>
+<dd>the success / error / whatever code</dd>
+</dl>
+<h3 id='f1'>hello() : void</h3>
+<p>Say hello (or something)</p>
+<p>
+Say hello, or whatever the message is passed as an argument.
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>msg - the message</dd>
+</dl>
+<h3 id='f2'>program(char *name) : void</h3>
+<p>Print the program name.</p>
+<p>
+Print the name of the program, given as a parameter.
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>name - the program name</dd>
+</dl>
+<h3 id='f3'>params(int num, WORD what[]) : int</h3>
+<p>Print the program arguments.</p>
+<p>
+Print the arguments given in the command line, if any. The second
+argument would be 'char *argv[]' in standard C.
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>num - the number of arguments</dd>
+<dd>what - the arguments</dd>
+</dl>
+<dl>
+<dt>Returns:</dt>
+<dd>the number of arguments</dd>
+</dl>
+<h3 id='f4'>bye() : void</h3>
+<p>Say bye.</p>
+<p>
+Say bye to the user. This function should be
+the last called function in the program, but who knows.
+</p>
+<br>
 <hr>
-  <p style='text-align:right;'>
-   Documentation generated by gdoc v1.06 / 22 May 2018 - (c) 2016-18 FloppySoftware
-  </p>
- </body>
-</html>
+<p style='text-align:right;'>
+Documentation generated by gdoc v1.08 / 14 May 2025 - (c) 2016-2025 Miguel Garcia / FloppySoftware
+</p>
+</body>
+</html>

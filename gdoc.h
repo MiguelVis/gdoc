@@ -35,14 +35,15 @@
 		11 May 2018 : v1.04
 		16 May 2018 : v1.05
 		22 May 2018 : v1.06
+		21 Nov 2021 : Increase TAG_MAX_DETAILS. Added DET_PREFORMAT.
 */
 
 /* Program data
    ------------
 */
 #define APP_NAME    "gdoc"
-#define APP_VERSION "v1.06 / 22 May 2018"
-#define APP_COPYRGT "(c) 2016-18 FloppySoftware"
+#define APP_VERSION "v1.08 / 14 May 2025"
+#define APP_COPYRGT "(c) 2016-2025 Miguel Garcia / FloppySoftware"
 #define APP_USAGE   "gdoc [-options...] filename [> destination]"
 #define APP_OPTIONS "\t-c for C source (default)\n\t-a for assembler source\n\t-t for text output (default)\n\t-h for html output\n\t-m for markdown output"
 
@@ -93,10 +94,15 @@
 */
 #define TAG_FILE_MAIN "MAIN"
 
+/* Special values for detailed explanation
+   ---------------------------------------
+*/
+#define DET_PREFORMAT "```"  // Preformatted text
+
 /* Max. # of entries in arrays
    ---------------------------
 */
-#define TAG_MAX_DETAILS  64  // Detail lines
+#define TAG_MAX_DETAILS  512 // Detail lines
 #define TAG_MAX_AUTHORS  8   // Authors
 #define TAG_MAX_PARAMS   8   // Parameters
 #define TAG_MAX_DOCLINKS 16  // Document links
@@ -118,8 +124,8 @@
 /* Error codes
    -----------
 */
-#define ERR_BAD_OPT    10 // Bad option
-#define ERR_BAD_CMD    11 // Bad command line
+#define ERR_BAD_OPT     10 // Bad option
+#define ERR_BAD_CMD     11 // Bad command line
 
 #define ERR_OPEN        20 // Can't open
 #define ERR_CLOSE       21 // Can't close

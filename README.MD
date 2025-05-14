@@ -108,7 +108,7 @@ With **gdoc** are included two example files with their respective outputs in HT
 
 ## Copyright
 
-Copyright (c) 2016-18 Miguel Garcia / FloppySoftware.
+Copyright (c) 2016-2025 Miguel Garcia / FloppySoftware.
 
 All rights reserved.
 
