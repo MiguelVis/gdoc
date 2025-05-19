@@ -60,6 +60,7 @@
 		22 May 2018 : 1.06 : Added @project. Added special argument value "MAIN" to @file.
 		21 Nov 2021 : 1.07 : Added preformatted text in detailed explanations.
 		14 May 2025 : 1.08 : Updated copyright.
+		18 May 2025 : ?.?? : Added clone_str(). Improved pointers and error handling.
 
 	Implemented tags:
 
@@ -411,18 +412,28 @@ char *buf;
 		// Check for tags
 
 		if((val = eat_tag(TAG_FN, buf))) {            // @fn
+			check_one(tag_fn, ERR_ONE_FN);
+			
 			tag_fn = need_value(val);
 		}
 		else if((val = eat_tag(TAG_BRIEF, buf))) {    // @brief
+			check_one(tag_brief, ERR_ONE_BRIEF);
+			
 			tag_brief = need_value(val);
 		}
 		else if((val = eat_tag(TAG_FILE, buf))) {     // @file
+			check_one(tag_file, ERR_ONE_FILE);
+			
 			tag_file = get_value(val);
 		}
 		else if((val = eat_tag(TAG_SECTION, buf))) {  // @section
+			check_one(tag_section, ERR_ONE_SECTION);
+			
 			tag_section = need_value(val);
 		}
 		else if((val = eat_tag(TAG_PROJECT, buf))) {  // @project
+			check_one(tag_project, ERR_ONE_PROJECT);
+		
 			tag_project = need_value(val);
 		}
 	}
@@ -445,27 +456,43 @@ char *buf;
 		// Check for tags
 
 		if((val = eat_tag(TAG_FILE, buf))) {            // @file
+		
+			//check_one(tag_file, ERR_ONE_FILE);
+			
 			tag_file = get_value(val);
 		}
 		else if((val = eat_tag(TAG_FN, buf))) {         // @fn
+		
+			check_one(tag_fn, ERR_ONE_FN);
+			
 			tag_fn = need_value(val);
 		}
 		else if((val = eat_tag(TAG_BRIEF, buf))) {      // @brief
+			//check_one(tag_brief, ERR_ONE_BRIEF);
+			
 			tag_brief = need_value(val);
 		}
 		else if((val = eat_tag(TAG_AUTHOR, buf))) {     // @author
 			add_author(need_value(val));
 		}
 		else if((val = eat_tag(TAG_DATE, buf))) {       // @date
+			check_one(tag_date, ERR_ONE_DATE);
+			
 			tag_date = need_value(val);
 		}
 		else if((val = eat_tag(TAG_VERSION, buf))) {    // @version
+			check_one(tag_version, ERR_ONE_VERSION);
+		
 			tag_version = need_value(val);
 		}
 		else if((val = eat_tag(TAG_COPYRIGHT, buf))) {  // @copyright
+			check_one(tag_copyright, ERR_ONE_COPYRGT);
+			
 			tag_copyright = need_value(val);
 		}
 		else if((val = eat_tag(TAG_RETURN, buf))) {     // @return
+			check_one(tag_return, ERR_ONE_RETURN);
+		
 			tag_return = need_value(val);
 		}
 		else if((val = eat_tag(TAG_PARAM, buf))) {      // @param
@@ -475,9 +502,13 @@ char *buf;
 			add_doclink(need_value(val));
 		}
 		else if((val = eat_tag(TAG_SECTION, buf))) {    // @section
+			//check_one(tag_section, ERR_ONE_SECTION);
+			
 			tag_section = need_value(val);
 		}
 		else if((val = eat_tag(TAG_PROJECT, buf))) {    // @project
+			//check_one(tag_project, ERR_ONE_PROJECT);
+			
 			tag_project = need_value(val);
 		}
 		else {
@@ -688,15 +719,11 @@ dump_st0()
 
 		// Collect @file for the title
 
-		ref_file = (*tag_file ? tag_file : g_fname);
+		ref_file = (clone_str(*tag_file ? tag_file : g_fname));
 
 		// Collect @project for the title
 
-		ref_project = (tag_project ? tag_project : NULL);
-
-		// Prevent free
-
-		tag_file = tag_project = NULL;
+		ref_project = (tag_project ? clone_str(tag_project) : NULL);
 	}
 	else if(tag_fn) {
 
@@ -706,7 +733,7 @@ dump_st0()
 
 			// Add @fn
 
-			ref_fns[ref_num_fns] = tag_fn;
+			ref_fns[ref_num_fns] = clone_str(tag_fn);
 
 			// Add link
 
@@ -714,11 +741,7 @@ dump_st0()
 
 			// Add @brief
 
-			ref_fnbriefs[ref_num_fns++] = (tag_brief ? tag_brief : "");
-
-			// Prevent free
-
-			tag_fn = tag_brief = NULL;
+			ref_fnbriefs[ref_num_fns++] = (clone_str(tag_brief ? tag_brief : ""));
 		}
 		else {
 			// Not enough room
@@ -734,17 +757,13 @@ dump_st0()
 
 			// Add @section
 
-			ref_scs[ref_num_scs] = tag_section;
+			ref_scs[ref_num_scs] = clone_str(tag_section);
 
 			// Add link
 
 			ref_scslinks[ref_num_scs] = make_link(LINK_SC_PREFIX, ref_num_scs);
 
 			++ref_num_scs;
-
-			// Prevent free
-
-			tag_section = NULL;
 		}
 	}
 }
@@ -1407,16 +1426,9 @@ char *tag, *buf;
 get_value(buf)
 char *buf;
 {
-	char *val;
-
-	// Skip spaces on the right, and
-	// allocate buffer.
-
-	val = alloc_mem(strlen(rblanks(buf)) + 1);
-
-	// Return value
-
-	return strcpy(val, buf);
+	// Skip spaces on the right
+	
+	return clone_str(rblanks(buf));
 }
 
 /* Need value
@@ -1457,7 +1469,7 @@ char prefix; unsigned int index;
 
     sprintf(s, "#%c%u", prefix, index);
 
-    return strcpy(alloc_mem(strlen(s) + 1), s);
+    return clone_str(s);
 }
 
 /* Get link address from "address|title"
@@ -1569,6 +1581,28 @@ unsigned int size;
 	error(ERR_NO_MEM);
 }
 
+/* Clone string
+   ------------
+   Return address of new string or throws error if not enough memory.
+*/
+clone_str(str)
+char *str;
+{
+	return strcpy(alloc_mem(strlen(str) + 1), str);
+}
+
+/* Check if tag is already defined and throw error
+   -----------------------------------------------
+*/
+check_one(tag, error)
+char *tag, *error;
+{
+
+	if(tag) {
+		error_line(error);
+	}
+}
+
 /* Print extended error message and exit
    -------------------------------------
 */
@@ -1595,6 +1629,16 @@ int err; char *ext;
 
 		case ERR_IN_DOC     : s = "Nexted doc block"; break;
 		case ERR_EOF_DOC    : s = "Unclosed doc block"; break;
+		
+		case ERR_ONE_FILE   : s = "More than one file"; break;
+		case ERR_ONE_FN     : s = "More than one fn"; break;
+		case ERR_ONE_BRIEF  : s = "More than one brief"; break;
+		case ERR_ONE_DATE   : s = "More than one date"; break;
+		case ERR_ONE_VERSION: s = "More than one version"; break;
+		case ERR_ONE_COPYRGT: s = "More than one copyright"; break;
+		case ERR_ONE_RETURN : s = "More than one return"; break;
+		case ERR_ONE_SECTION: s = "More than one section"; break;
+		case ERR_ONE_PROJECT: s = "More than one project"; break;
 
 		case ERR_UNK_TAG    : s = "Unknown tag"; break;
 

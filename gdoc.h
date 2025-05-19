@@ -140,6 +140,16 @@
 #define ERR_IN_DOC      30 // Nexted doc block at line #
 #define ERR_EOF_DOC     31 // Unclosed doc block
 
+#define ERR_ONE_FILE    32 // More than one file
+#define ERR_ONE_FN      33 // ... fn
+#define ERR_ONE_BRIEF   34 // ... brief
+#define ERR_ONE_DATE    35 // ... date
+#define ERR_ONE_VERSION 36 // ... version
+#define ERR_ONE_COPYTGT 37 // ... copyright
+#define ERR_ONE_RETURN  38 // ... return
+#define ERR_ONE_SECTION 39 // ... section
+#define ERR_ONE_PROJECT 40 // ... project
+
 #define ERR_UNK_TAG     40 // Unknown tag at line #
 
 #define ERR_TM_DETAILS  41 // Too many detail lines at line #
