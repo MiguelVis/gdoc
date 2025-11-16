@@ -60,7 +60,8 @@
 		22 May 2018 : 1.06 : Added @project. Added special argument value "MAIN" to @file.
 		21 Nov 2021 : 1.07 : Added preformatted text in detailed explanations.
 		14 May 2025 : 1.08 : Updated copyright.
-		18 May 2025 : ?.?? : Added clone_str(). Improved pointers and error handling.
+		18 May 2025 : 1.09 : Added clone_str(). Improved pointers and error handling.
+		16 Nov 2025 : 1.10 : Fix printing project and file names at step #1.
 
 	Implemented tags:
 
@@ -278,7 +279,11 @@ proc_file()
 			}
 
 			if(strcmp(ref_file, TAG_FILE_MAIN)) {
-				printf(" - %s", ref_file);
+				if(ref_project) {
+					printf(" - ");
+				}
+				
+				printf("%s", ref_file);
 			}
 		}
 

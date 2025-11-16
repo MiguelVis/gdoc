@@ -42,7 +42,7 @@
    ------------
 */
 #define APP_NAME    "gdoc"
-#define APP_VERSION "v1.08 / 14 May 2025"
+#define APP_VERSION "v1.10 / 16 Nov 2025"
 #define APP_COPYRGT "(c) 2016-2025 Miguel Garcia / FloppySoftware"
 #define APP_USAGE   "gdoc [-options...] filename [> destination]"
 #define APP_OPTIONS "\t-c for C source (default)\n\t-a for assembler source\n\t-t for text output (default)\n\t-h for html output\n\t-m for markdown output"
